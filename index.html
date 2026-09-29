@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="ka" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Changela - ინოვაციური ციფრული პლატფორმა და თანამედროვე ტექნოლოგიური გადაწყვეტილებები. შექმენი, განავითარე და მართე ციფრული მომავალი.">
+  <meta name="keywords" content="Changela, ტექნოლოგია, ვებ-დეველოპმენტი, AI, ანალიტიკა, პროგრამული უზრუნველყოფა">
+  <meta name="author" content="Changela">
+  <title>Changela • მომავლის ტექნოლოგიური პლატფორმა</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  
+  <!-- Google Fonts: Noto Sans Georgian & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Ambient Lights & Interactive Canvas -->
+  <div class="ambient-glow glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+  <div class="ambient-glow glow-3" aria-hidden="true"></div>
+  <canvas id="particles-canvas" class="particles-bg" aria-hidden="true"></canvas>
+
+  <!-- Sticky Header / Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" id="brand-logo" aria-label="Changela მთავარი გვერდი">
+        <div class="logo-icon-box">
+          <i class="fa-solid fa-bolt"></i>
+        </div>
+        <span class="logo-text">Changela<span class="logo-dot">.</span></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" id="nav-menu" aria-label="მთავარი ნავიგაცია">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#hero" class="nav-link active" id="nav-hero-link"><i class="fa-solid fa-house"></i> მთავარი</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link" id="nav-about-link"><i class="fa-solid fa-circle-info"></i> ჩვენ შესახებ</a></li>
+          <li class="nav-item"><a href="#features" class="nav-link" id="nav-features-link"><i class="fa-solid fa-cubes-stacked"></i> ფუნქციები</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link" id="nav-contact-link"><i class="fa-solid fa-paper-plane"></i> კონტაქტი</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="nav-actions">
+        <!-- Theme Switcher -->
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="თემის შეცვლა (მუქი / ნათელი)" title="თემის გადართვა">
+          <i class="fa-solid fa-moon theme-icon moon-icon"></i>
+          <i class="fa-solid fa-sun theme-icon sun-icon"></i>
+        </button>
+
+        <!-- CTA Button -->
+        <a href="#contact" class="btn btn-primary nav-cta-btn" id="nav-cta-btn">
+          <span>დაწყება</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-toggle-btn" id="mobile-toggle-btn" aria-label="მენიუს გახსნა/დახურვა" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <ul class="mobile-nav-list">
+        <li><a href="#hero" class="mobile-nav-link" id="m-nav-hero"><i class="fa-solid fa-house"></i> მთავარი</a></li>
+        <li><a href="#about" class="mobile-nav-link" id="m-nav-about"><i class="fa-solid fa-circle-info"></i> ჩვენ შესახებ</a></li>
+        <li><a href="#features" class="mobile-nav-link" id="m-nav-features"><i class="fa-solid fa-cubes-stacked"></i> ფუნქციები</a></li>
+        <li><a href="#contact" class="mobile-nav-link" id="m-nav-contact"><i class="fa-solid fa-paper-plane"></i> კონტაქტი</a></li>
+      </ul>
+      <div class="mobile-drawer-bottom">
+        <a href="#contact" class="btn btn-primary w-full" id="m-cta-btn">დაგვიკავშირდით ახლავე</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-section" id="hero" aria-label="Hero Section">
+      <div class="container hero-container">
+        
+        <div class="hero-content">
+          <!-- Top Badge -->
+          <div class="badge-pill" id="hero-badge">
+            <span class="badge-pulse"></span>
+            <span class="badge-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+            <span class="badge-text">Changela 2.0 • მომავლის ტექნოლოგიური პლატფორმა</span>
+          </div>
+
+          <!-- Main Heading -->
+          <h1 class="hero-title">
+            შექმენი, განავითარე და მართე 
+            <span class="gradient-text">ციფრული მომავალი</span>
+          </h1>
+
+          <!-- Hero Subtitle -->
+          <p class="hero-subtitle">
+            Changela წარმოადგენს უახლეს ეკოსისტემას თქვენი ბიზნესის სრული ავტომატიზაციისა და ზრდისთვის. 
+            მძლავრი AI ინტეგრაციები, უსაფრთხოების უმაღლესი სტანდარტი და შეუზღუდავი წარმადობა ერთ სივრცეში.
+          </p>
+
+          <!-- Hero Actions -->
+          <div class="hero-cta-group">
+            <a href="#contact" class="btn btn-primary btn-lg" id="hero-start-btn">
+              <span class="btn-text">უფასოდ დაწყება</span>
+              <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="#about" class="btn btn-glass btn-lg" id="hero-explore-btn">
+              <span class="btn-icon"><i class="fa-solid fa-circle-play"></i></span>
+              <span class="btn-text">გაიგე მეტი</span>
+            </a>
+          </div>
+
+          <!-- Live Metrics Bar -->
+          <div class="hero-metrics-grid">
+            <div class="metric-card">
+              <div class="metric-number"><span class="counter" data-target="15000">0</span><span class="metric-suffix">+</span></div>
+              <div class="metric-label">აქტიური მომხმარებელი</div>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-card">
+              <div class="metric-number"><span class="counter" data-target="99.9">0</span><span class="metric-suffix">%</span></div>
+              <div class="metric-label">უწყვეტი საიმედოობა</div>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-card">
+              <div class="metric-number"><span class="metric-prefix">&lt;</span><span class="counter" data-target="50">0</span><span class="metric-suffix">ms</span></div>
+              <div class="metric-label">რეაგირების დრო</div>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-card">
+              <div class="metric-number"><span class="counter" data-target="24">0</span><span class="metric-suffix">/7</span></div>
+              <div class="metric-label">ცოცხალი მხარდაჭერა</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Showcase (3D Parallax Card) -->
+        <div class="hero-visual" id="hero-visual-container">
+          <div class="visual-card-wrapper" id="hero-card-3d">
+            <div class="visual-glow-ring"></div>
+            
+            <div class="main-mockup-frame">
+              <div class="mockup-header-bar">
+                <div class="browser-dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-yellow"></span>
+                  <span class="dot dot-green"></span>
+                </div>
+                <div class="mockup-url-bar">
+                  <i class="fa-solid fa-lock"></i>
+                  <span>https://app.changela.ge/live-analytics</span>
+                </div>
+                <div class="mockup-status-tag">
+                  <span class="live-blink"></span>
+                  <span>LIVE</span>
+                </div>
+              </div>
+
+              <!-- Main Dashboard Screenshot -->
+              <div class="mockup-image-box">
+                <img src="assets/images/hero-dashboard.jpg" alt="Changela ინოვაციური დაშბორდი და ანალიტიკა" class="hero-showcase-img" id="hero-showcase-img" loading="eager">
+              </div>
+            </div>
+
+            <!-- Floating Glass Badges -->
+            <div class="floating-badge badge-top-right float-anim-1">
+              <div class="f-badge-icon bg-cyan"><i class="fa-solid fa-chart-line"></i></div>
+              <div class="f-badge-content">
+                <span class="f-badge-title">ზრდის მაჩვენებელი</span>
+                <span class="f-badge-val">+142.8% ამ თვეში</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-bottom-left float-anim-2">
+              <div class="f-badge-icon bg-purple"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="f-badge-content">
+                <span class="f-badge-title">Zero-Trust შიფრაცია</span>
+                <span class="f-badge-val">100% დაცულია</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-center-floating float-anim-3">
+              <div class="f-badge-icon bg-green"><i class="fa-solid fa-robot"></i></div>
+              <div class="f-badge-content">
+                <span class="f-badge-title">AI ასისტენტი</span>
+                <span class="f-badge-val">ოპტიმიზაცია დასრულდა</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section class="about-section section-padding" id="about" aria-label="About Section">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <div class="section-tag" id="about-tag">
+            <i class="fa-solid fa-compass"></i> ჩვენ შესახებ
+          </div>
+          <h2 class="section-title">
+            ჩვენ ვაშენებთ ტექნოლოგიას, რომელიც <span class="gradient-text">ცვლის რეალობას</span>
+          </h2>
+          <p class="section-desc">
+            Changela შეიქმნა იმისთვის, რომ ბიზნესებსა და დეველოპერებს მიეცეთ ულიმიტო შესაძლებლობები — 
+            ინოვაციური გადაწყვეტილებები, რომლებიც აერთიანებს სისწრაფეს, ინტელექტსა და ელეგანტურ დიზაინს.
+          </p>
+        </div>
+
+        <!-- About Grid -->
+        <div class="about-grid">
+          
+          <!-- Left Column: Story, Interactive Tabs & Highlights -->
+          <div class="about-info-col">
+            
+            <!-- Interactive Switcher Tabs -->
+            <div class="about-tabs" role="tablist" aria-label="ჩვენ შესახებ ტაბები">
+              <button class="about-tab-btn active" role="tab" aria-selected="true" data-tab="mission" id="tab-mission">
+                <i class="fa-solid fa-bullseye"></i> მისია
+              </button>
+              <button class="about-tab-btn" role="tab" aria-selected="false" data-tab="vision" id="tab-vision">
+                <i class="fa-solid fa-eye"></i> ხედვა
+              </button>
+              <button class="about-tab-btn" role="tab" aria-selected="false" data-tab="values" id="tab-values">
+                <i class="fa-solid fa-gem"></i> ღირებულებები
+              </button>
+            </div>
+
+            <!-- Tab Content Display -->
+            <div class="tab-content-panel active" id="panel-mission">
+              <h3 class="panel-heading">გავამარტივოთ რთული ტექნოლოგიური პროცესები</h3>
+              <p class="panel-text">
+                ჩვენი მისიაა შევქმნათ ისეთი ინსტრუმენტები, რომლებიც ნებისმიერი მასშტაბის გუნდს საშუალებას მისცემს 
+                კონცენტრირდეს რეალურ ღირებულებაზე, ნაცვლად რუტინული პრობლემების მოგვარებისა.
+              </p>
+              <ul class="about-check-list">
+                <li><i class="fa-solid fa-circle-check"></i> რთული არქიტექტურის მარტივ სამუშაო პროცესად გარდაქმნა</li>
+                <li><i class="fa-solid fa-circle-check"></i> პროდუქტიულობის მინიმუმ 3-ჯერ გაზრდა ავტომატიზაციით</li>
+                <li><i class="fa-solid fa-circle-check"></i> გლობალური სტანდარტების დანერგვა თითოეულ დეტალში</li>
+              </ul>
+            </div>
+
+            <div class="tab-content-panel" id="panel-vision">
+              <h3 class="panel-heading">ვიყოთ ლიდერები ციფრულ ევოლუციაში</h3>
+              <p class="panel-text">
+                ჩვენი ხედვაა გავხდეთ მომავლის ტექნოლოგიების მთავარი საყრდენი, სადაც ხელოვნური ინტელექტი, 
+                ადამიანური კრეატივი და მაღალი წარმადობა ქმნის უსაზღვრო შესაძლებლობებს.
+              </p>
+              <ul class="about-check-list">
+                <li><i class="fa-solid fa-circle-check"></i> ინოვაციური AI ალგორითმების უწყვეტი ინტეგრაცია</li>
+                <li><i class="fa-solid fa-circle-check"></i> მდგრადი და მასშტაბირებადი ღრუბლოვანი გადაწყვეტილებები</li>
+                <li><i class="fa-solid fa-circle-check"></i> საერთაშორისო ბაზარზე კონკურენტუნარიანობის უზრუნველყოფა</li>
+              </ul>
+            </div>
+
+            <div class="tab-content-panel" id="panel-values">
+              <h3 class="panel-heading">გამჭვირვალობა, ხარისხი და პარტნიორობა</h3>
+              <p class="panel-text">
+                Changela-ში ჩვენ გვჯერა, რომ დიდი პროდუქტები იქმნება ურყევი ეთიკით, მომხმარებლის მიმართ ღრმა პატივისცემით 
+                და დეტალებისადმი პერფექციონისტული მიდგომით.
+              </p>
+              <ul class="about-check-list">
+                <li><i class="fa-solid fa-circle-check"></i> კომპრომისის გარეშე უმაღლესი კოდის ხარისხი</li>
+                <li><i class="fa-solid fa-circle-check"></i> მომხმარებლის მონაცემთა აბსოლუტური კონფიდენციალურობა</li>
+                <li><i class="fa-solid fa-circle-check"></i> მუდმივი განვითარება და სიახლეების ძიება</li>
+              </ul>
+            </div>
+
+            <!-- Mini Highlight Stat Cards -->
+            <div class="about-stat-row">
+              <div class="about-stat-box">
+                <div class="as-number"><span class="counter" data-target="500">0</span>+</div>
+                <div class="as-text">წარმატებული პროექტი</div>
+              </div>
+              <div class="about-stat-box">
+                <div class="as-number"><span class="counter" data-target="98">0</span>%</div>
+                <div class="as-text">კმაყოფილი პარტნიორი</div>
+              </div>
+              <div class="about-stat-box">
+                <div class="as-number"><span class="counter" data-target="12">0</span>+</div>
+                <div class="as-text">ინდუსტრიული ჯილდო</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Premium Visual & Interactive Achievement Badge -->
+          <div class="about-visual-col">
+            <div class="about-image-card">
+              <div class="about-image-wrapper">
+                <img src="assets/images/about-innovation.jpg" alt="Changela-ს ინოვაციური გუნდი და ტექნოლოგიური ლაბორატორია" class="about-img" loading="lazy">
+                <div class="about-image-overlay"></div>
+              </div>
+
+              <!-- Overlaid Glass Box -->
+              <div class="about-floating-experience">
+                <div class="afe-icon"><i class="fa-solid fa-award"></i></div>
+                <div class="afe-details">
+                  <div class="afe-years">2026 წელი</div>
+                  <div class="afe-title">წლის ინოვაციური პლატფორმა</div>
+                  <div class="afe-sub">ტექნოლოგიური გამორჩეულობისთვის</div>
+                </div>
+              </div>
+
+              <!-- Secondary Floating Pill -->
+              <div class="about-floating-pill">
+                <span class="pill-dot"></span>
+                <span>100% ენთუზიაზმითა და სიზუსტით</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== FEATURES SECTION ==================== -->
+    <section class="features-section section-padding" id="features" aria-label="Features Section">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <div class="section-tag" id="features-tag">
+            <i class="fa-solid fa-shapes"></i> შესაძლებლობები
+          </div>
+          <h2 class="section-title">
+            ყველაფერი, რაც გჭირდებათ <span class="gradient-text">წარმატებისთვის</span>
+          </h2>
+          <p class="section-desc">
+            თანამედროვე ხელსაწყოების სრული პაკეტი, შექმნილი მაქსიმალური სისწრაფის, სიმარტივისა და მასშტაბირებისთვის.
+          </p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="features-filter-bar">
+          <button class="filter-btn active" data-filter="all" id="filter-all">ყველა ფუნქცია</button>
+          <button class="filter-btn" data-filter="speed" id="filter-speed">წარმადობა</button>
+          <button class="filter-btn" data-filter="ai" id="filter-ai">AI & ავტომატიზაცია</button>
+          <button class="filter-btn" data-filter="security" id="filter-security">უსაფრთხოება</button>
+        </div>
+
+        <!-- Features Cards Grid -->
+        <div class="features-grid" id="features-grid">
+          
+          <!-- Card 1 -->
+          <div class="feature-card glass-card" data-category="speed">
+            <div class="feature-icon-wrap icon-cyan">
+              <i class="fa-solid fa-bolt-lightning"></i>
+            </div>
+            <span class="feature-tag">წარმადობა</span>
+            <h3 class="feature-title">ულტრა-სწრაფი სისწრაფე</h3>
+            <p class="feature-desc">
+              გლობალური Edge CDN ქსელი და ოპტიმიზებული კოდის ბაზა, რომელიც უზრუნველყოფს მყისიერ რეაგირებას ნებისმიერი წერტილიდან.
+            </p>
+            <div class="feature-card-footer">
+              <span class="feature-meta"><i class="fa-solid fa-gauge-high"></i> &lt;50ms latency</span>
+              <button class="feature-details-btn" data-feature="1" aria-label="დეტალების ნახვა">
+                დეტალები <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="feature-card glass-card" data-category="ai">
+            <div class="feature-icon-wrap icon-purple">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <span class="feature-tag">ინტელექტი</span>
+            <h3 class="feature-title">ჭკვიანი AI ავტომატიზაცია</h3>
+            <p class="feature-desc">
+              ინტეგრირებული ხელოვნური ინტელექტი, რომელიც აანალიზებს მონაცემებს, აპროგნოზირებს ტენდენციებს და ზოგავს დროს.
+            </p>
+            <div class="feature-card-footer">
+              <span class="feature-meta"><i class="fa-solid fa-microchip"></i> GPT-4 & LLM Core</span>
+              <button class="feature-details-btn" data-feature="2" aria-label="დეტალების ნახვა">
+                დეტალები <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="feature-card glass-card" data-category="security">
+            <div class="feature-icon-wrap icon-green">
+              <i class="fa-solid fa-shield-cat"></i>
+            </div>
+            <span class="feature-tag">უსაფრთხოება</span>
+            <h3 class="feature-title">საბანკო დონის დაცვა</h3>
+            <p class="feature-desc">
+              256-ბიტიანი AES შიფრაცია, Zero-Trust არქიტექტურა და ორფაქტორიანი დაცვა თქვენი მონაცემების უსაფრთხოებისთვის.
+            </p>
+            <div class="feature-card-footer">
+              <span class="feature-meta"><i class="fa-solid fa-lock"></i> ISO 27001 მზაობა</span>
+              <button class="feature-details-btn" data-feature="3" aria-label="დეტალების ნახვა">
+                დეტალები <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="feature-card glass-card" data-category="ai">
+            <div class="feature-icon-wrap icon-orange">
+              <i class="fa-solid fa-chart-pie"></i>
+            </div>
+            <span class="feature-tag">ანალიტიკა</span>
+            <h3 class="feature-title">ლაივ მონაცემთა ანალიზი</h3>
+            <p class="feature-desc">
+              ინტერაქტიული გრაფიკები, რეალურ დროში განახლებადი მეტრიკები და დეტალური ანგარიშები ბიზნეს გადაწყვეტილებებისთვის.
+            </p>
+            <div class="feature-card-footer">
+              <span class="feature-meta"><i class="fa-solid fa-wave-square"></i> Real-time Sync</span>
+              <button class="feature-details-btn" data-feature="4" aria-label="დეტალების ნახვა">
+                დეტალები <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="feature-card glass-card" data-category="speed">
+            <div class="feature-icon-wrap icon-blue">
+              <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <span class="feature-tag">ინტეგრაცია</span>
+            <h3 class="feature-title">უნივერსალური API</h3>
+            <p class="feature-desc">
+              RESTful და GraphQL მძლავრი API ინტერფეისები. მარტივი ინტეგრაცია 100+ პოპულარულ სერვისთან და ბაზასთან.
+            </p>
+            <div class="feature-card-footer">
+              <span class="feature-meta"><i class="fa-solid fa-code"></i> Webhooks & SDK</span>
+              <button class="feature-details-btn" data-feature="5" aria-label="დეტალების ნახვა">
+                დეტალები <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="feature-card glass-card" data-category="security">
+            <div class="feature-icon-wrap icon-pink">
+              <i class="fa-solid fa-headset"></i>
+            </div>
+            <span class="feature-tag">მხარდაჭერა</span>
+            <h3 class="feature-title">24/7 პერსონალური სერვისი</h3>
+            <p class="feature-desc">
+              გამოცდილი ინჟინრების გუნდი მზადაა დაგეხმაროთ ნებისმიერ ტექნიკურ გამოწვევაში დღე-ღამის ნებისმიერ მონაკვეთში.
+            </p>
+            <div class="feature-card-footer">
+              <span class="feature-meta"><i class="fa-solid fa-comments"></i> 15 წთ პასუხი</span>
+              <button class="feature-details-btn" data-feature="6" aria-label="დეტალების ნახვა">
+                დეტალები <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section class="contact-section section-padding" id="contact" aria-label="Contact Section">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <div class="section-tag" id="contact-tag">
+            <i class="fa-solid fa-envelope"></i> დაგვიკავშირდით
+          </div>
+          <h2 class="section-title">
+            მზად ხართ ახალი იდეების <span class="gradient-text">განსახორციელებლად?</span>
+          </h2>
+          <p class="section-desc">
+            გაქვთ შეკითხვა, იდეა ან გსურთ ინდივიდუალური გადაწყვეტა? მოგვწერეთ და ჩვენი გუნდი დაუყოვნებლივ დაგიკავშირდებათ.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          
+          <!-- Contact Info Left Column -->
+          <div class="contact-info-card glass-card">
+            <div class="info-card-header">
+              <h3 class="info-title">საკონტაქტო ინფორმაცია</h3>
+              <p class="info-sub">ჩვენ ყოველთვის ღია ვართ საინტერესო თანამშრომლობისა და ინოვაციური პროექტებისთვის.</p>
+            </div>
+
+            <!-- Direct Contact Items with Copy feature -->
+            <div class="contact-items-list">
+              
+              <div class="contact-item" id="contact-email-box" title="დააჭირეთ კოპირებისთვის" tabindex="0" role="button">
+                <div class="ci-icon-box ci-email">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="ci-content">
+                  <span class="ci-label">ელ-ფოსტა (დააჭირე კოპირებისთვის)</span>
+                  <span class="ci-value" id="copy-email-text">info@changela.ge</span>
+                </div>
+                <span class="ci-copy-badge"><i class="fa-regular fa-copy"></i></span>
+              </div>
+
+              <div class="contact-item" id="contact-phone-box" title="დააჭირეთ დასარეკად">
+                <a href="tel:+995322123456" class="contact-item-link">
+                  <div class="ci-icon-box ci-phone">
+                    <i class="fa-solid fa-phone"></i>
+                  </div>
+                  <div class="ci-content">
+                    <span class="ci-label">ტელეფონი</span>
+                    <span class="ci-value">+995 (32) 2 123 456</span>
+                  </div>
+                  <span class="ci-copy-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                </a>
+              </div>
+
+              <div class="contact-item">
+                <div class="ci-icon-box ci-location">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="ci-content">
+                  <span class="ci-label">მისამართი</span>
+                  <span class="ci-value">თბილისი, ი. ჭავჭავაძის გამზ. 37მ</span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="ci-icon-box ci-hours">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div class="ci-content">
+                  <span class="ci-label">სამუშაო გრაფიკი</span>
+                  <span class="ci-value">ორშაბათი - პარასკევი: 09:00 - 19:00</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Live Status Indicator -->
+            <div class="office-status-pill">
+              <span class="status-indicator-dot"></span>
+              <span class="status-indicator-text">სისტემა აქტიურია • ოპერატორები ონლაინში არიან</span>
+            </div>
+
+            <!-- Social Links -->
+            <div class="contact-socials">
+              <span class="socials-label">გამოგვყევით ქსელებში:</span>
+              <div class="social-icons-row">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn" title="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub" title="GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (Twitter)" title="Twitter">
+                  <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook" title="Facebook">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Contact Form Right Column -->
+          <div class="contact-form-card glass-card">
+            <h3 class="form-title">მოგვწერეთ შეტყობინება</h3>
+            <p class="form-subtitle">შეავსეთ ფორმა და ჩვენი ექსპერტი დაგიკავშირდებათ უმოკლეს ვადაში.</p>
+
+            <form class="interactive-form" id="contact-form" novalidate>
+              
+              <div class="form-row">
+                <!-- Name Field -->
+                <div class="form-group">
+                  <label for="contact-name" class="form-label">თქვენი სახელი და გვარი <span class="required">*</span></label>
+                  <div class="input-wrapper">
+                    <i class="fa-regular fa-user input-icon"></i>
+                    <input type="text" id="contact-name" name="name" class="form-input" placeholder="გიორგი მაისურაძე" required autocomplete="name">
+                  </div>
+                  <span class="field-error" id="name-error">გთხოვთ შეიყვანოთ თქვენი სახელი</span>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                  <label for="contact-email" class="form-label">ელექტრონული ფოსტა <span class="required">*</span></label>
+                  <div class="input-wrapper">
+                    <i class="fa-regular fa-envelope input-icon"></i>
+                    <input type="email" id="contact-email" name="email" class="form-input" placeholder="example@domain.ge" required autocomplete="email">
+                  </div>
+                  <span class="field-error" id="email-error">გთხოვთ შეიყვანოთ სწორი ელ-ფოსტის მისამართი</span>
+                </div>
+              </div>
+
+              <!-- Service Selection -->
+              <div class="form-group">
+                <label for="contact-service" class="form-label">რა მომსახურება გაინტერესებთ?</label>
+                <div class="input-wrapper select-wrapper">
+                  <i class="fa-solid fa-list-check input-icon"></i>
+                  <select id="contact-service" name="service" class="form-input form-select">
+                    <option value="saas">SaaS & პლატფორმის დანერგვა</option>
+                    <option value="custom-dev">ინდივიდუალური ვებ-დეველოპმენტი</option>
+                    <option value="ai-integration">AI & მანქანური სწავლების ინტეგრაცია</option>
+                    <option value="ui-ux">UI/UX პრემიუმ დიზაინი</option>
+                    <option value="consulting">ტექნიკური კონსულტაცია & აუდიტი</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Message Field with Character Counter -->
+              <div class="form-group">
+                <div class="label-with-counter">
+                  <label for="contact-message" class="form-label">შეტყობინება <span class="required">*</span></label>
+                  <span class="char-counter" id="char-counter">0 / 500</span>
+                </div>
+                <div class="input-wrapper textarea-wrapper">
+                  <textarea id="contact-message" name="message" class="form-input form-textarea" rows="4" placeholder="მოგვიყევით თქვენი პროექტის ან მოთხოვნის შესახებ..." maxlength="500" required></textarea>
+                </div>
+                <span class="field-error" id="message-error">გთხოვთ შეიყვანოთ შეტყობინების ტექსტი (მინ. 10 სიმბოლო)</span>
+              </div>
+
+              <!-- Checkbox Agreement -->
+              <div class="form-group terms-group">
+                <label class="checkbox-label" for="agree-terms">
+                  <input type="checkbox" id="agree-terms" name="agree" required checked>
+                  <span class="custom-checkbox"></span>
+                  <span class="checkbox-text">ვეთანხმები პერსონალურ მონაცემთა დამუშავების წესებს</span>
+                </label>
+                <span class="field-error" id="terms-error">გთხოვთ დაეთანხმოთ წესებს</span>
+              </div>
+
+              <!-- Submit Button with loading state -->
+              <button type="submit" class="btn btn-primary btn-submit w-full" id="submit-btn">
+                <span class="btn-spinner" id="btn-spinner"><i class="fa-solid fa-circle-notch fa-spin"></i></span>
+                <span class="btn-submit-text" id="btn-submit-text">შეტყობინების გაგზავნა</span>
+                <i class="fa-solid fa-paper-plane btn-submit-icon" id="btn-submit-icon"></i>
+              </button>
+
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-top-grid">
+        
+        <!-- Brand Info -->
+        <div class="footer-col footer-brand-col">
+          <a href="#hero" class="brand-logo footer-logo">
+            <div class="logo-icon-box">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <span class="logo-text">Changela<span class="logo-dot">.</span></span>
+          </a>
+          <p class="footer-tagline">
+            ინოვაციური ციფრული ტექნოლოგიები და პლატფორმა, რომელიც უზრუნველყოფს თქვენი ბიზნესის მომავალს დღესვე.
+          </p>
+          <div class="footer-newsletter">
+            <span class="newsletter-title">გამოიწერეთ სიახლეები:</span>
+            <form class="newsletter-form" id="newsletter-form">
+              <input type="email" placeholder="თქვენი ელ-ფოსტა" class="newsletter-input" required id="newsletter-email">
+              <button type="submit" class="newsletter-btn" aria-label="გამოწერა" id="newsletter-submit-btn">
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">ნავიგაცია</h4>
+          <ul class="footer-links">
+            <li><a href="#hero"><i class="fa-solid fa-chevron-right"></i> მთავარი</a></li>
+            <li><a href="#about"><i class="fa-solid fa-chevron-right"></i> ჩვენ შესახებ</a></li>
+            <li><a href="#features"><i class="fa-solid fa-chevron-right"></i> ფუნქციები</a></li>
+            <li><a href="#contact"><i class="fa-solid fa-chevron-right"></i> კონტაქტი</a></li>
+          </ul>
+        </div>
+
+        <!-- Platform Solutions -->
+        <div class="footer-col">
+          <h4 class="footer-heading">გადაწყვეტილებები</h4>
+          <ul class="footer-links">
+            <li><a href="#features"><i class="fa-solid fa-chevron-right"></i> Cloud არქიტექტურა</a></li>
+            <li><a href="#features"><i class="fa-solid fa-chevron-right"></i> AI ავტომატიზაცია</a></li>
+            <li><a href="#features"><i class="fa-solid fa-chevron-right"></i> კიბერუსაფრთხოება</a></li>
+            <li><a href="#features"><i class="fa-solid fa-chevron-right"></i> API ეკოსისტემა</a></li>
+          </ul>
+        </div>
+
+        <!-- Trust & Security -->
+        <div class="footer-col">
+          <h4 class="footer-heading">სანდოობა & გარანტია</h4>
+          <div class="trust-badge-box">
+            <div class="tb-item">
+              <i class="fa-solid fa-shield-virus"></i>
+              <span>ISO 27001 სერთიფიცირებული</span>
+            </div>
+            <div class="tb-item">
+              <i class="fa-solid fa-server"></i>
+              <span>99.98% SLA გარანტია</span>
+            </div>
+            <div class="tb-item">
+              <i class="fa-solid fa-lock"></i>
+              <span>GDPR თავსებადი უსაფრთხოება</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          © 2026 Changela Inc. ყველა უფლება დაცულია. შექმნილია უმაღლესი სტანდარტებით.
+        </div>
+        <div class="footer-legal-links">
+          <a href="#" class="legal-link" id="legal-privacy">კონფიდენციალურობა</a>
+          <span class="legal-sep">•</span>
+          <a href="#" class="legal-link" id="legal-terms">მომსახურების პირობები</a>
+          <span class="legal-sep">•</span>
+          <a href="#" class="legal-link" id="legal-cookies">Cookies პოლიტიკა</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== FEATURE DETAILS MODAL ==================== -->
+  <div class="modal-backdrop" id="feature-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card glass-card">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="მოდალის დახურვა">&times;</button>
+      <div class="modal-icon-header" id="modal-icon-header">
+        <i class="fa-solid fa-bolt"></i>
+      </div>
+      <span class="modal-tag" id="modal-tag">დეტალები</span>
+      <h3 class="modal-title" id="modal-title">ფუნქციის სათაური</h3>
+      <p class="modal-body-text" id="modal-body-text">დეტალური აღწერა ჩაიტვირთება აქ...</p>
+      
+      <div class="modal-highlights" id="modal-highlights">
+        <!-- Injected via JS -->
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="modal-action-btn">დაიწყე გამოყენება</button>
+        <button class="btn btn-glass" id="modal-dismiss-btn">დახურვა</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SUCCESS FEEDBACK MODAL ==================== -->
+  <div class="modal-backdrop" id="success-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card glass-card text-center success-modal-card">
+      <div class="success-icon-animation">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <h3 class="modal-title">შეტყობინება წარმატებით გაიგზავნა!</h3>
+      <p class="modal-body-text" id="success-modal-msg">
+        გმადლობთ დაკავშირებისთვის. Changela-ს გუნდი მიიღებს თქვენს მოთხოვნას და რამდენიმე წუთში დაგიკავშირდებათ მითითებულ ელ-ფოსტაზე.
+      </p>
+      <button class="btn btn-primary mt-4" id="success-modal-close-btn">ძალიან კარგი</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- Scroll To Top Button -->
+  <button class="scroll-top-btn" id="scroll-top-btn" aria-label="გვერდის დასაწყისში დაბრუნება" title="ზემოთ დაბრუნება">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Interactive Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
